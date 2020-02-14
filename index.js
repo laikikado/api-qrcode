@@ -1,19 +1,17 @@
-//L'application requiert l'utilisation du module Express.
-//La variable express nous permettra d'utiliser les fonctionnalités du module Express.  
 var express = require('express'); 
- 
-// Nous définissons ici les paramètres du serveur.
-var hostname = 'localhost'; 
-var port = 3000; 
- 
-var app = express(); 
- 
-// Démarrer le serveur 
-app.listen(port, hostname, function(){
-	console.log("Mon serveur fonctionne sur http://"+ hostname +":"+port+"\n"); 
-});
+var app = express();
+var cors = require('cors');
 
 let data = require('./data');
+
+app.use(
+   cors({
+       credentials: true,
+       origin: true
+   })
+);
+
+app.options('*', cors());
 
 app.get("/codespromos", (req, res) => {
     res.json(data);
