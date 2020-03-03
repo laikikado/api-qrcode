@@ -1,12 +1,12 @@
 var express = require('express'); 
 var app = express();
 var cors = require('cors');
-let port = 3000;
+port = 3000;
 
 let data = require('./data');
 
 app.listen(port, () =>  {
-   console.log('le serveur fonctionne')
+   console.log('le serveur fonctionne sur le port ${port}')
 })
 
 app.use(
@@ -22,7 +22,8 @@ app.get("/codespromos", (req, res) => {
     res.json(data);
  });
 
- app.get("/codespromos/:id", (req, res) => {
+//app.get("/codespromos/:id", (req, res) => {
+app.get("/codespromos", (req, res) => {
     const codepromoId = req.params.id;
     const codepromo = data.find(_codepromo => _codepromo.id === codepromoId);
  
