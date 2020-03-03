@@ -1,8 +1,13 @@
 var express = require('express'); 
 var app = express();
 var cors = require('cors');
+let port = 3000;
 
 let data = require('./data');
+
+app.listen(port, () =>  {
+   console.log('le serveur fonctionne')
+})
 
 app.use(
    cors({
