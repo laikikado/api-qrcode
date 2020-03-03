@@ -1,11 +1,11 @@
 var express = require('express'); 
 var app = express();
 var cors = require('cors');
-port = 3000;
+const PORT = 3000;
 
 let data = require('./data');
 
-app.listen(process.env.PORT || port, function() =>  {
+app.listen(process.env.PORT || 3000, () =>  {
    console.log('le serveur fonctionne sur le port ${port}')
 })
 
@@ -20,9 +20,9 @@ app.options('*', cors());
 
 /*app.get("/codespromos", function(req, res) => {
     res.json(data);*/
-app.get('/', function(req, res) {
+app.get('/', (req, res) {
 	res.sendFile(path.join(__dirname, 'index.html'));
- });
+});
 
 /*app.get("/codespromos/:id", function(req, res) => {
     const codepromoId = req.params.id;
