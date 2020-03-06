@@ -48,7 +48,7 @@ module.exports = [
 		"endDate": "28/08/2020"
 	},
 	{
-		"id": "8",
+		"id": "9",
 		"title": "Uniqlo",
 		"discount": "-15%",
 		"endDate": "19/04/2020"
