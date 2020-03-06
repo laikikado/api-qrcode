@@ -17,10 +17,11 @@ app.use(
 
 app.options('*', cors());
 
+
 /*app.get("/codespromos", function(req, res) => {
     res.json(data);*/
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.send("hello world");
 });
 
 /*app.get("/codespromos/:id", function(req, res) => {
