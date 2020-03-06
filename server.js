@@ -1,7 +1,6 @@
 let express = require('express');
 let app = express();
 let cors = require('cors');
-const PORT = 3000;
 
 let data = require('./data');
 
