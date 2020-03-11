@@ -5,25 +5,27 @@ const port = 3000
 
 let data = require('./data');
 
-app.listen(process.env.PORT || port, function(){
-    console.log(`le serveur fonctionne sur le port ${port}`)
-});
-
-app.use(
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://root:root@cluster-jigqf.azure.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+	app.listen(process.env.PORT || port, function(){
+		console.log(`le serveur fonctionne sur le port ${port}`)
+	});
+  
+	app.use(
     cors({
         credentials: true,
         origin: true
-    })
-);
-
-app.options('*', cors());
-
-
-app.get("/codespromos", function(req, res) {
+    }));
+	
+	app.options('*', cors());
+	
+	app.get("/codespromos", function(req, res) {
     res.json(data);
-});
-
-app.get("/codespromos/:id", function(req, res) {
+	});
+	app.get("/codespromos/:id", function(req, res) {
     const codepromoId = req.params.id;
     const codepromo = data.find(_codepromo => _codepromo.id == codepromoId);
 
@@ -32,4 +34,10 @@ app.get("/codespromos/:id", function(req, res) {
     } else {
        res.json({ message: `Le code promo ${codepromoId} n'existe pas`})
     }
- });
+	});
+  client.close();
+	
+});
+
+
+
