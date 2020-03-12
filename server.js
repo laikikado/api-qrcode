@@ -11,7 +11,7 @@ app.listen(process.env.PORT || port, function(){
 
 async function main(){
 
-    const uri = "mongodb+srv://root:root@cluster/test?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://root:root@cluster-jigqf.azure.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
 
     try {
